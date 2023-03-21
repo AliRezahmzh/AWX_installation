@@ -1,0 +1,36 @@
+1) https://github.com/geerlingguy/ansible-role-nfs.git
+2) https://github.com/geerlingguy/ansible-role-nginx.git
+3) https://github.com/geerlingguy/ansible-role-haproxy.git
+--------
+
+
+
+
+  
+AWX
+yum install -y epel-release
+yum install -y python3
+#sudo python3 -m pip install -U pip
+#sudo python3 -m pip install -U setuptools
+pip3 install ansible
+yum install -y yum-utils device-mapper-persistent-data lvm2 ansible git python-devel python-pip python-docker-py vim-enhanced
+pip3 install cryptography
+pip3 install jsonschema
+pip3 install docker-compose
+pip3 install docker
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum install docker-ce -y
+systemctl start docker
+systemctl enable docker
+#wget https://github.com/ansible/awx/archive/17.1.0.zip
+git clone https://github.com/ansible/awx.git
+cd awx/
+git clone https://github.com/ansible/awx-logos.git
+cd installer/
+$ vim inventory
+awx_official=true
+admin_user=admin
+admin_password=qazwsx
+ansible-playbook -i inventory install.yml -vv                                                                                                                                                                    
+
+
